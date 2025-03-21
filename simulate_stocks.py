@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
     # Stocks not impacted by global seasonality. Take a small subset of stocks to be impacted inversely
     impacted_stocks_global_inv = np.where(impacted_stocks_global == 0)[0]
-    impacted_stocks_global_inv = np.random.choice(impacted_stocks_global_inv, size=10, replace=False)
+    impacted_stocks_global_inv = np.random.choice(impacted_stocks_global_inv, size=20, replace=False)
 
     # Generate GBM paths
     for t in range(1, n_obs):
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     prices = np.concatenate([prices, prices_h.T], axis=1)
 
     # Randomize the order of the stocks
-    stock_order = np.random.permutation(n_stocks)
+    stock_order = np.random.permutation(len(prices[0]))
     prices = prices[:, stock_order]
 
     # Convert to DataFrame. Time index is the date range from 2017-01-01, has no real meaning
