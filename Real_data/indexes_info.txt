@@ -1,0 +1,20 @@
+^GSPC - S&P 500 Index: Tracks 500 of the largest U.S. companies, a key benchmark for U.S. equities.
+^NDX - NASDAQ-100: Tracks the 100 largest non-financial companies listed on the NASDAQ exchange.
+^DJI - Dow Jones Industrial Average: Includes 30 major U.S. companies from various sectors.
+^RUT - Russell 2000: Tracks the performance of 2,000 small-cap U.S. stocks.
+^FTSE - FTSE 100 Index: Represents the largest 100 companies listed on the London Stock Exchange.
+^GDAXI - DAX Index: Tracks the performance of 30 major companies on the Frankfurt Stock Exchange, representing Germany's stock market.
+^N225 - Nikkei 225: Tracks the 225 largest companies listed on the Tokyo Stock Exchange.
+^IXIC - NASDAQ Composite: Includes all stocks listed on the NASDAQ exchange, heavily weighted towards technology.
+^STOXX50E - EURO STOXX 50: Tracks 50 of the largest companies in the Eurozone.
+^GSPTSE - S&P/TSX Composite Index: Tracks the performance of the largest companies listed on the Toronto Stock Exchange in Canada.
+^AORD - S&P/ASX 200: Tracks the largest 200 companies listed on the Australian Stock Exchange.
+^HSI - Hang Seng Index: Tracks the largest companies listed on the Hong Kong Stock Exchange.
+^BSESN - BSE Sensex: Tracks 30 major companies listed on the Bombay Stock Exchange in India.
+^NSEI - Nifty 50: Tracks the 50 largest companies listed on the National Stock Exchange of India.
+^MXX - Mexican IPC: Tracks the performance of 35 major companies listed on the Mexican Stock Exchange.
+^AEX - AEX Index: Includes the 25 largest companies listed on the Amsterdam Stock Exchange (Euronext Amsterdam).
+^IBEX - IBEX 35: Tracks the 35 most liquid stocks traded on the Madrid Stock Exchange in Spain.
+^OMX - OMX Stockholm 30: Tracks the 30 largest companies listed on the Stockholm Stock Exchange in Sweden.
+^BVSP - Bovespa Index: Tracks the largest companies listed on the São Paulo Stock Exchange in Brazil.
+IMOEX.ME - MOEX Russia Index: Tracks the largest companies listed on the Moscow Exchange (formerly RTS Index).
