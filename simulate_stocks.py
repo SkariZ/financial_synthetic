@@ -21,6 +21,8 @@ def simulate_ornstein_uhlenbeck(mu, theta, sigma, dt, n_steps, X0):
     return X
 
 if __name__ == "__main__":
+
+    ##### Simulate Geometric Brownian Motion (GBM) for stock prices #####
     # Parameters
     n_stocks = 120
     n_obs = 2500
@@ -133,7 +135,7 @@ if __name__ == "__main__":
             # Update the price for the current stock
             prices[t, i] = prices[t-1, i] * np.exp(price_change)  # Update stock price based on the return
 
-    ##### Simulate the Ornstein-Uhlenbeck process for a subset of stocks #####
+    ##### Simulate the Ornstein-Uhlenbeck process for a subset of stocks/commodities #####
     n_stocks_ornstein = 10
     mu = np.random.uniform(75, 125, n_stocks_ornstein)          # Long-term mean
     theta = np.random.uniform(0.2, 0.5, n_stocks_ornstein)      # Mean reversion rate
@@ -151,7 +153,7 @@ if __name__ == "__main__":
     #Append the OU stocks to the simulated stock prices
     prices = np.concatenate([prices, ou_stocks], axis=1)
     
-    ###### Simulate the Heston Model  for a subset of stocks ######
+    ###### Simulate the Heston Model for a subset of stocks/commodities ######
     n_stocks_heston = 20
     S0 = np.random.uniform(75, 125, n_stocks_heston) # Initial price
     mu = 0.07  # Drift

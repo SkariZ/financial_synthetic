@@ -1,5 +1,5 @@
 """
-This script implements a naive portfolio strategy where we randomly pick n_stocks_pick stocks and allocate equal weights to them.
+This script implements a strategy where we randomly pick n_stocks_pick stocks and allocate equal weights to them.
 We then calculate the portfolio value over time assuming buy and hold (no rebalancing). 
 We call it "monkey portfolio" because it simply chooses 5 stocks randomly and holds them without any further analysis. 
 For more proper analysis of this technique a bootstrapping method should be used to evaluate the performance of the portfolio, since it is highly dependent on the randomly selected stocks.
