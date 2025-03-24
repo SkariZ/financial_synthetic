@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # Load the simulated stock data
     stock_data = pd.read_csv('../simulated_stock_data.csv')  # Load stock data into a DataFrame
 
-    np.random.seed(27)
+    np.random.seed(1)
 
     # Parameters
     n_stocks_pick = 5                           # Number of stocks to pick (and allocate equal weights to)

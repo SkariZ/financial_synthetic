@@ -53,15 +53,7 @@ if __name__ == "__main__":
     for i in range(n_stocks - sum(group_sizes)-2):
         mus = np.concatenate([mus, np.random.uniform(-0.1, 0.1, 1)])
         sigmas = np.concatenate([sigmas, np.random.uniform(0.05, 0.3, 1)])
-    
-    for i in range(1):
-        mus = np.concatenate([mus, np.random.uniform(-0.15, -0.1, 1)])
-        sigmas = np.concatenate([sigmas, np.random.uniform(0.01, 0.05, 1)])
-
-    for i in range(1):
-        mus = np.concatenate([mus, np.random.uniform(0, 0.01, 1)])
-        sigmas = np.concatenate([sigmas, np.random.uniform(0.01, 0.02, 1)])
-           
+     
     # Decide which stocks get seasonality
     seasonal_stocks_mu = np.random.choice([0, 1], size=n_stocks, p=[0.6, 0.4])  # 40% of stocks seasonal
     seasonal_amplitudes = np.random.uniform(0.1, 0.225, n_stocks) * seasonal_stocks_mu
@@ -89,21 +81,43 @@ if __name__ == "__main__":
     impacted_stocks_global_inv = np.where(impacted_stocks_global == 0)[0]
     impacted_stocks_global_inv = np.random.choice(impacted_stocks_global_inv, size=20, replace=False)
 
+    # Build a stock-to-group map (for the first stocks that follow groups)
+    stock_to_group = []
+    for group_idx, size in enumerate(group_sizes):
+        stock_to_group.extend([group_idx] * size)
+
+    # Assign -1 to the remaining stocks that are not part of any group
+    remaining = n_stocks - len(stock_to_group)
+    stock_to_group.extend([-1] * remaining)
+
+    # Group-level correlation strength , 0.02 to 0.07
+    group_correlation_strength = np.random.uniform(0.02, 0.07, groups)             
+
     # Generate GBM paths
     for t in range(1, n_obs):
-        rand = np.random.normal(0, 1, n_stocks)
+        #rand = np.random.normal(0, 1, n_stocks)
         jump_rand = np.random.rand(n_stocks) < jump_prob
+
+        group_rand = np.random.normal(0, 1, groups)       # Group shocks
+        idio_rand = np.random.normal(0, 1, n_stocks)      # Idiosyncratic shocks
+        sigma_small = 1e-4 * np.random.normal(0, 1, n_stocks)  # Small noise indepencence for volatility
 
         # Loop over each stock
         for i in range(n_stocks):
-            
+            group_idx = stock_to_group[i]
+            if group_idx != -1:  # If the stock is part of a group
+                correlated_noise = group_correlation_strength[group_idx] * group_rand[group_idx]
+            else:
+                correlated_noise = 0  # No group-level correlation for "non-group" stocks
+            total_rand = correlated_noise + idio_rand[i]  # Total noise for the stock
+
             # Calculate the volatility with seasonality
             seasonal_component_vol = 0
             if seasonal_stocks_vol[i] == 1:
                 seasonal_component_vol = seasonal_sigma_amplitudes[i] * np.cos(
                     2 * np.pi * t / seasonal_sigma_periods[i]
                 )
-            sigma_t = sigmas[i] + seasonal_component_vol  # Base volatility + seasonal component
+            sigma_t = sigmas[i] + sigma_small[i] + seasonal_component_vol  # Base volatility + seasonal component
 
             # Calculate the drift with seasonality
             seasonal_component_mu = 0  # Default if no seasonality
@@ -125,7 +139,7 @@ if __name__ == "__main__":
                 sigma_t += global_seasonality_factor * 0.3  # Adding a smaller effect to the volatility (global volatility)
 
             # Calculate the drift and volatility with seasonality
-            price_change = (mu_t - 0.5 * sigma_t ** 2) * dt + sigma_t * np.sqrt(dt) * rand[i]
+            price_change = (mu_t - 0.5 * sigma_t ** 2) * dt + sigma_t * np.sqrt(dt) * total_rand
             
             # Check if a jump occurs and apply it
             if jump_rand[i]:  # If the stock experiences a jump
@@ -134,6 +148,17 @@ if __name__ == "__main__":
         
             # Update the price for the current stock
             prices[t, i] = prices[t-1, i] * np.exp(price_change)  # Update stock price based on the return
+
+    # Metadata for the stocks
+    stock_metadata = pd.DataFrame({
+        'Stock': [f'Stock_{i+1}' for i in range(n_stocks)],
+        'Group': stock_to_group,
+        'Drift': mus,
+        'Volatility': sigmas,
+        'Seasonal_Mu': seasonal_stocks_mu,
+        'Seasonal_Vol': seasonal_stocks_vol,
+        'Global_Impact': impacted_stocks_global
+    })
 
     ##### Simulate the Ornstein-Uhlenbeck process for a subset of stocks/commodities #####
     n_stocks_ornstein = 10
@@ -153,6 +178,14 @@ if __name__ == "__main__":
     #Append the OU stocks to the simulated stock prices
     prices = np.concatenate([prices, ou_stocks], axis=1)
     
+    # Metadata for the OU stocks
+    ou_metadata = pd.DataFrame({
+        'Stock': [f'Stock_{i+1}' for i in range(n_stocks_ornstein)],
+        'Long_Term_Mean': mu,
+        'Mean_Reversion': theta,
+        'Volatility': sigma
+    })
+
     ###### Simulate the Heston Model for a subset of stocks/commodities ######
     n_stocks_heston = 20
     S0 = np.random.uniform(75, 125, n_stocks_heston) # Initial price
@@ -191,9 +224,57 @@ if __name__ == "__main__":
     #Append the Heston stocks to the simulated stock prices
     prices = np.concatenate([prices, prices_h.T], axis=1)
 
+    # Metadata for the Heston stocks
+    heston_metadata = pd.DataFrame({
+        'Stock': [f'Stock_{i+1}' for i in range(n_stocks_heston)],
+        'Initial_Price': S0,
+        'Initial_Volatility': v0,
+        'Drift': mu,
+        'Mean_Reversion': kappa,
+        'Long_Term_Volatility': theta,
+        'Volatility_Volatility': sigma
+    })
+
+    ##### Simulate 30 (3*10) stocks that have the same daily return (almost) as GBM , stronger correlation than the GBM's above#####
+    n_stocks_gbm = 10
+    times = 3
+    idiosyncratic_strength = 0.4
+    for _ in range(times):
+        mu_gbm = np.random.uniform(-0.05, 0.15, n_stocks_gbm)   # Drift per stock
+        sigma_gbm = np.random.uniform(0.15, 0.3, n_stocks_gbm) # Volatility per stock
+        prices_gbm = np.zeros((n_obs, n_stocks_gbm))
+        prices_gbm[0, :] = np.random.uniform(50, 150, n_stocks_gbm)
+
+        seasonal_amp_gbm = np.random.uniform(0.075, 0.2, n_stocks_gbm)
+        seasonal_p_gbm = np.random.randint(100, 400, n_stocks_gbm)
+
+        for t in range(1, n_obs):
+            common_rand = np.random.normal(0, 1)
+            idio_rand = np.random.normal(0, 1, n_stocks_gbm)
+            for i in range(n_stocks_gbm):
+                seasonal_component = seasonal_amp_gbm[i] * np.sin(2 * np.pi * t / seasonal_p_gbm[i])
+                mu_gbm_tmp = mu_gbm[i] + seasonal_component
+                price_change = (
+                    (mu_gbm_tmp - 0.5 * sigma_gbm[i] ** 2) * dt
+                    + sigma_gbm[i] * np.sqrt(dt) * (common_rand + idiosyncratic_strength * idio_rand[i])
+                )
+                prices_gbm[t, i] = prices_gbm[t - 1, i] * np.exp(price_change)
+
+        #Append the GBM stocks to the simulated stock prices
+        prices = np.concatenate([prices, prices_gbm], axis=1)
+
+    # Metadata for the GBM stocks
+    gbm_metadata = pd.DataFrame({
+        'Stock': [f'Stock_{i+1}' for i in range(n_stocks_gbm)],
+        'Drift': mu_gbm,
+        'Volatility': sigma_gbm,
+        'Seasonal_Amplitude': seasonal_amp_gbm,
+        'Seasonal_Period': seasonal_p_gbm
+    })
+
     # Randomize the order of the stocks
-    stock_order = np.random.permutation(len(prices[0]))
-    prices = prices[:, stock_order]
+    #stock_order = np.random.permutation(len(prices[0]))
+    #prices = prices[:, stock_order]
 
     # Convert to DataFrame. Time index is the date range from 2017-01-01, has no real meaning
     dates = pd.date_range(start="2017-01-01", periods=n_obs, freq='B')  # Business days
