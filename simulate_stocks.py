@@ -273,8 +273,8 @@ if __name__ == "__main__":
     })
 
     # Randomize the order of the stocks
-    #stock_order = np.random.permutation(len(prices[0]))
-    #prices = prices[:, stock_order]
+    stock_order = np.random.permutation(len(prices[0]))
+    prices = prices[:, stock_order]
 
     # Convert to DataFrame. Time index is the date range from 2017-01-01, has no real meaning
     dates = pd.date_range(start="2017-01-01", periods=n_obs, freq='B')  # Business days
