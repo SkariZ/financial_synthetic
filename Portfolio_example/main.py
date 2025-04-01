@@ -21,24 +21,38 @@ if __name__ == "__main__":
     # Run the naive portfolio example
     print("Naive Portfolio Example")
     print("===================================")
-    npf.main()
+    w_npf, p_npf = npf.main()
 
     # Run the monkey portfolio example
     print("Monkey Portfolio Example")
     print("===================================")
-    mp.main()
+    w_mp, p_mp = mp.main()
 
     # Run the minimum variance portfolio example
     print("Minimum Variance Portfolio Example")
     print("===================================")
-    mvp2.main()
+    w_mpv2, p_mpw2 = mvp2.main()
 
     # Run the mean variance portfolio example
     print("Mean Variance Portfolio Example")
     print("===================================")
-    mvp.main()
+    w_mvp, p_mvp = mvp.main()
 
     # Run the sharpe ratio portfolio example
     print("Sharpe Ratio Portfolio Example")
     print("===================================")
-    srp.main()
+    w_srp, p_srp = srp.main()
+
+    # Plotting the results
+    plt.figure(figsize=(10, 5))
+    plt.plot(p_npf, label='Naive Portfolio', linewidth=2)
+    plt.plot(p_mp, label='Monkey Portfolio', linewidth=2)
+    plt.plot(p_mpw2, label='Minimum Variance Portfolio', linewidth=2)
+    plt.plot(p_mvp, label='Mean Variance Portfolio', linewidth=2)
+    plt.plot(p_srp, label='Sharpe Ratio Portfolio', linewidth=2)
+    plt.title('Portfolio Value Over Time')
+    plt.xlabel('Time (Days)')
+    plt.ylabel('Portfolio Value')
+    plt.legend()
+    plt.savefig('../Imgs/Portfolio_Comparison.png', bbox_inches='tight', dpi=300)
+    plt.show()

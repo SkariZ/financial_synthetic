@@ -81,6 +81,8 @@ def main():
     plt.legend()
     plt.show()
 
+    return opt_weights, portfolio_values
+
 if __name__ == "__main__":
     main()
     
