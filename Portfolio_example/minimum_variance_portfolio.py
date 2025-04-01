@@ -2,10 +2,11 @@
 """
 Minimum Variance Portfolio:
 
-The minimum variance portfolio is a portfolio of assets that has the lowest possible variance (risk) given the correlation matrix of the assets. 
-The weights of the assets in the minimum variance portfolio are determined by minimizing the portfolio 
-variance subject to the constraint that the weights sum to 1. 
-In some scenarios, the minimum variance portfolio can provide better risk-adjusted returns and sometimes not.
+The minimum variance portfolio is a portfolio of assets that has the lowest possible risk (variance) for a given level of expected return.
+This strategy is based on the idea that by diversifying across multiple assets, we can reduce the overall risk of the portfolio.
+
+In this example, we will use the covariance matrix of stock returns to find the optimal weights for the minimum variance portfolio.
+We will assume that the investor has a fixed amount of capital to invest and will not rebalance the portfolio over time.
 
 """
 
@@ -22,10 +23,9 @@ def portfolio_variance(weights, corr_matrix):
 def constraint(weights):
     return np.sum(weights) - 1
 
-if __name__ == "__main__":
-
+def main():
     # Load the simulated stock data
-    stock_data = pd.read_csv('../simulated_stock_data.csv')  # Load stock data into a DataFrame
+    stock_data = pd.read_csv('../Simulated_data/simulated_stock_data.csv')  # Load stock data into a DataFrame
 
     # Parameters
     fit_time = 500                          # Fit the model on the first 1000 days
@@ -96,3 +96,7 @@ if __name__ == "__main__":
     plt.ylabel("Portfolio Value")
     plt.legend()
     plt.show()
+
+if __name__ == "__main__":
+    main()
+    

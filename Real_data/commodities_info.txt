@@ -1,0 +1,40 @@
+Commodity Futures Tickers Description
+
+GC=F - Gold Futures
+Precious metal traded on COMEX. Often considered a safe-haven asset and inflation hedge.
+
+SI=F - Silver Futures
+Precious metal traded on COMEX. Used in industrial applications and as a store of value.
+
+CL=F - Crude Oil Futures (WTI)
+Energy commodity traded on NYMEX. Represents West Texas Intermediate crude oil prices.
+
+NG=F - Natural Gas Futures
+Energy commodity traded on NYMEX. Highly seasonal due to heating and cooling demand.
+
+HG=F - Copper Futures
+Base metal traded on COMEX. Widely used in construction and industrial applications.
+
+ZC=F - Corn Futures
+Agricultural commodity traded on CBOT. Prone to seasonal patterns and weather-related volatility.
+
+ZW=F - Wheat Futures
+Agricultural commodity traded on CBOT. Global staple with significant price influence from weather and geopolitics.
+
+ZS=F - Soybean Futures
+Agricultural commodity traded on CBOT. Key crop in global food and oil production.
+
+CC=F - Cocoa Futures
+Soft commodity traded on ICE. Used primarily in chocolate production. Influenced by West African crop cycles.
+
+KC=F - Coffee Futures
+Soft commodity traded on ICE. Global beverage market driver, sensitive to weather conditions in producing regions.
+
+SB=F - Sugar Futures
+Soft commodity traded on ICE. Influenced by energy markets due to ethanol production links.
+
+CT=F - Cotton Futures
+Soft commodity traded on ICE. Used in textiles; affected by global demand cycles and weather.
+
+LBS=F - Lumber Futures
+Soft commodity used in construction. Highly sensitive to housing markets and seasonal demand.

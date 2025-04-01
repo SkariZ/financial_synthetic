@@ -17,4 +17,3 @@
 ^IBEX - IBEX 35: Tracks the 35 most liquid stocks traded on the Madrid Stock Exchange in Spain.
 ^OMX - OMX Stockholm 30: Tracks the 30 largest companies listed on the Stockholm Stock Exchange in Sweden.
 ^BVSP - Bovespa Index: Tracks the largest companies listed on the São Paulo Stock Exchange in Brazil.
-IMOEX.ME - MOEX Russia Index: Tracks the largest companies listed on the Moscow Exchange (formerly RTS Index).

@@ -295,7 +295,7 @@ if __name__ == "__main__":
 
     # Save to CSV for student use
     price_df.index.name = 'Date'
-    price_df.to_csv("simulated_stock_data.csv")
+    price_df.to_csv("Simulated_data/simulated_stock_data.csv")
 
     # Plot all stock prices and the mean
     price_df.plot(figsize=(10, 6), title="Simulated Stock Prices", legend=False)

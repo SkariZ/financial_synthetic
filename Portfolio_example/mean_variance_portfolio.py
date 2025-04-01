@@ -1,3 +1,11 @@
+"""
+Mean-Variance Portfolio Optimization Example:
+
+Similar to the Sharpe Ratio optimization, this example demonstrates how to optimize a portfolio using the Mean-Variance approach. 
+But instead of maximizing the Sharpe Ratio, we minimize the negative of the expected return minus a risk aversion term multiplied by the variance. 
+This approach is more traditional in finance and allows for a more direct control over risk preferences.
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,10 +22,9 @@ def mean_variance_objective(weights, mu, cov_matrix, risk_aversion):
 def constraint(weights):
     return np.sum(weights) - 1
 
-if __name__ == "__main__":
-
+def main():
     # Load the simulated stock data
-    stock_data = pd.read_csv('../simulated_stock_data.csv')  # Adjust the path if needed
+    stock_data = pd.read_csv('../Simulated_data/simulated_stock_data.csv')  # Adjust the path if needed
 
     # Parameters
     fit_time = 500                          # Fit the model on the first 500 days
@@ -50,7 +57,7 @@ if __name__ == "__main__":
                       method='SLSQP', bounds=bounds, constraints=constraints)
 
     mv_weights = result.x
-    print('Optimized Portfolio Weights:', mv_weights)
+    #print('Optimized Portfolio Weights:', mv_weights)
 
     # Initial investment per stock based on optimized weights
     initial_investment_per_stock = initial_capital * mv_weights
@@ -80,3 +87,6 @@ if __name__ == "__main__":
     plt.ylabel("Portfolio Value")
     plt.legend()
     plt.show()
+
+if __name__ == "__main__":
+    main()

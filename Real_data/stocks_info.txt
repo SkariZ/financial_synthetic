@@ -1,30 +1,46 @@
-Description of Stock Tickers:
+Stock Ticker Groups Description
 
-1. **U.S. Stocks**:
-   - **AAPL**: Apple Inc. - A leading tech company known for its iPhones, MacBooks, and other consumer electronics.
-   - **MSFT**: Microsoft Corporation - A global tech giant that produces software, hardware, and cloud services.
-   - **TSLA**: Tesla Inc. - A popular electric vehicle manufacturer and energy solutions provider.
-   - **GOOG**: Alphabet Inc. (Google) - A global leader in internet services, advertising, and technology innovations.
-   - **AMZN**: Amazon.com Inc. - An e-commerce and cloud computing powerhouse.
+1. US Tech and Growth Stocks
+- AAPL - Apple Inc.
+- MSFT - Microsoft Corporation
+- TSLA - Tesla Inc.
+- GOOG - Alphabet Inc. (Google)
+- AMZN - Amazon.com Inc.
+Primarily large-cap U.S. technology and growth companies.
 
-2. **Swedish Stocks**:
-   - **HM-B.ST**: H&M (Hennes & Mauritz AB) - A leading global fashion retailer based in Sweden.
-   - **VOLV-B.ST**: Volvo AB - A multinational manufacturing company, known for its vehicles and construction equipment.
-   - **ERIC-B.ST**: Ericsson AB - A Swedish multinational networking and telecommunications company.
-   - **SEB-A.ST**: Skandinaviska Enskilda Banken (SEB) - A major Swedish financial services group.
-   - **ATCO-A.ST**: Atlas Copco AB - A Swedish multinational industrial company that manufactures tools and equipment.
+2. Swedish Stocks (Nasdaq Stockholm)
+- HM-B.ST - Hennes & Mauritz AB
+- VOLV-B.ST - Volvo AB
+- ERIC-B.ST - Ericsson
+- SEB-A.ST - Skandinaviska Enskilda Banken
+- ATCO-A.ST - Atlas Copco AB
+Large Swedish industrials, banks, and retail companies.
 
-3. **Global Stocks**:
-   - **TSM**: Taiwan Semiconductor Manufacturing Company - A leading semiconductor manufacturer based in Taiwan.
-   - **WMT**: Walmart Inc. - A U.S. multinational retail corporation known for its supermarkets and hypermarkets.
-   - **JNJ**: Johnson & Johnson - A U.S. multinational healthcare company focused on pharmaceuticals, medical devices, and consumer health products.
-   - **CVX**: Chevron Corporation - An American multinational corporation in the energy industry, primarily focused on oil and gas.
-   - **BAC**: Bank of America Corporation - A major financial institution in the United States.
-   - **VWAGY**: Volkswagen AG - A global automotive company based in Germany, known for brands like Volkswagen, Audi, and Porsche.
-   - **NKE**: Nike Inc. - A multinational corporation known for designing, manufacturing, and selling sports equipment and apparel.
-   - **SAP**: SAP SE - A global software corporation known for enterprise resource planning (ERP) solutions.
-   - **JPM**: JPMorgan Chase & Co. - A leading global financial services firm and one of the largest banks in the world.
-   - **MCD**: McDonald's Corporation - A global leader in the fast food industry, with franchises worldwide.
+3. Global Stocks (US, European, Asian)
+- TSM - Taiwan Semiconductor Manufacturing
+- WMT - Walmart Inc.
+- JNJ - Johnson & Johnson
+- CVX - Chevron Corporation
+- BAC - Bank of America
+- VWAGY - Volkswagen AG (ADR)
+- NKE - Nike Inc.
+- SAP - SAP SE (Germany)
+- JPM - JPMorgan Chase & Co.
+- MCD - McDonald's Corporation
+- INTC - Intel Corporation
+- CSCO - Cisco Systems, Inc.
+- DSV.CO - DSV A/S (Denmark)
+- MAERSK-B.CO - A.P. Moller - Maersk B (Denmark)
+- NOVO-B.CO - Novo Nordisk A/S (Denmark)
+- CARL-B.CO - Carlsberg A/S (Denmark)
+- CA.PA - Carrefour S.A. (France)
+- EQNR.OL - Equinor ASA (Norway)
+A mix of global leaders in tech, retail, energy, pharmaceuticals, and logistics.
 
-These tickers represent a mix of U.S., Swedish, and global companies across various industries including technology, healthcare, automotive, and retail. They are a good starting point for studying stock data, performance analysis, and market trends.
-
+4. Indian Stocks (NSE / BSE)
+- RELIANCE.NS - Reliance Industries
+- TCS.NS - Tata Consultancy Services
+- HDFCBANK.NS - HDFC Bank
+- HINDUNILVR.NS - Hindustan Unilever
+- INFY.NS - Infosys Ltd.
+Major Indian conglomerates, IT companies, and financial institutions.

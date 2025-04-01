@@ -1,18 +1,18 @@
 """
-This script implements a strategy where we randomly pick n_stocks_pick stocks and allocate equal weights to them.
-We then calculate the portfolio value over time assuming buy and hold (no rebalancing). 
-We call it "monkey portfolio" because it simply chooses 5 stocks randomly and holds them without any further analysis. 
-For more proper analysis of this technique a bootstrapping method should be used to evaluate the performance of the portfolio, since it is highly dependent on the randomly selected stocks.
+Monkey Portfolio Example:
+
+We will create a "monkey" portfolio by randomly selecting a subset of stocks from the available data.
+This portfolio can be used as a benchmark for comparison with other portfolio strategies. For more accurate estimate a bootstrap method can be used.
+
 """
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-if __name__ == "__main__":
-
+def main():
     # Load the simulated stock data
-    stock_data = pd.read_csv('../simulated_stock_data.csv')  # Load stock data into a DataFrame
+    stock_data = pd.read_csv('../Simulated_data/simulated_stock_data.csv')  # Load stock data into a DataFrame
 
     np.random.seed(1)
 
@@ -62,3 +62,6 @@ if __name__ == "__main__":
     plt.ylabel('Portfolio Value')
     plt.legend()
     plt.show()
+
+if __name__ == "__main__":
+    main()

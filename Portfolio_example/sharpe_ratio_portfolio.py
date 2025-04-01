@@ -1,3 +1,11 @@
+"""
+Sharpe Ratio Portfolio Optimization Example:
+
+We will create a portfolio that maximizes the Sharpe Ratio using the historical stock data. 
+The Sharpe Ratio is a measure of risk-adjusted return, and maximizing it allows us to find the optimal weights for our portfolio. 
+Its formula is: Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Portfolio Volatility. In this example, we will assume a risk-free rate of 0.
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,9 +22,8 @@ def negative_sharpe(weights, mu, cov_matrix):
 def constraint(weights):
     return np.sum(weights) - 1
 
-if __name__ == "__main__":
-
-    stock_data = pd.read_csv('../simulated_stock_data.csv')  # Adjust the path if needed
+def main():
+    stock_data = pd.read_csv('../Simulated_data/simulated_stock_data.csv')  # Adjust the path if needed
 
     # Parameters
     fit_time = 500
@@ -73,3 +80,7 @@ if __name__ == "__main__":
     plt.ylabel("Portfolio Value")
     plt.legend()
     plt.show()
+
+if __name__ == "__main__":
+    main()
+    

@@ -1,8 +1,9 @@
 """
 Naive Portfolio Example:
 
-In this example, we will create a naive portfolio by equally distributing the initial capital among the stocks. 
-We will then calculate the portfolio value over time assuming a buy and hold strategy (no rebalancing).
+The naive portfolio is a simple investment strategy where an investor allocates equal weights to all available stocks in the portfolio.
+This approach does not take into account the risk or return characteristics of the individual stocks, making it a straightforward but potentially suboptimal strategy.
+We calculate the portfolio value over time assuming a buy and hold strategy (no rebalancing).
 This portfolio and can be used as a benchmark for comparison with other portfolio strategies.
 
 """
@@ -11,10 +12,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-if __name__ == "__main__":
-
-    # Load the simulated stock data
-    stock_data = pd.read_csv('../simulated_stock_data.csv')  # Load stock data into a DataFrame
+def main():
+     # Load the simulated stock data
+    stock_data = pd.read_csv('../Simulated_data/simulated_stock_data.csv')  # Load stock data into a DataFrame
 
     # Parameters
     fit_time = 500                              # Fit the model on the first 1000 days (for comparison with minimum variance portfolio)
@@ -59,3 +59,6 @@ if __name__ == "__main__":
     plt.ylabel('Portfolio Value')
     plt.legend()
     plt.show()
+
+if __name__ == "__main__":
+    main()
