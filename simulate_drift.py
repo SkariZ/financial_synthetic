@@ -58,8 +58,9 @@ for i in range(1, n_series + 1):
     df = pd.read_csv(os.path.join(output_dir, f'simulated_series_{i}.csv'))
     # Plot each series
     plt.plot(df['Day'], df['Price'], label=f'Series {i}')
-plt.title('Simulated Time Series with GBM')
+plt.title('GBMs with same drift and volatility')
 plt.xlabel('Days')
 plt.ylabel('Price')
 plt.legend(loc='best', ncol=4, fontsize='small')
+plt.savefig('Imgs/simulated_series_plot.png', dpi=300, bbox_inches='tight')
 plt.show()

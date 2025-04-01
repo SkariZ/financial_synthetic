@@ -288,22 +288,23 @@ if __name__ == "__main__":
     
     #Find the correlation matrix
     corr_matrix = price_df.corr().round(4)
-    plt.figure(figsize=(12, 8))
+    plt.figure(figsize=(5, 5))
     plt.imshow(corr_matrix, cmap='coolwarm', interpolation='none')
     plt.colorbar()
-    plt.title('Correlation Matrix of Simulated Stock Prices')
+    plt.title('Correlation Matrix (random order)')
+    plt.savefig("Imgs/simulated_stock_correlation_matrix.png", dpi=300, bbox_inches='tight')
 
     # Save to CSV for student use
     price_df.index.name = 'Date'
     price_df.to_csv("Simulated_data/simulated_stock_data.csv")
 
     # Plot all stock prices and the mean
-    price_df.plot(figsize=(10, 6), title="Simulated Stock Prices", legend=False)
+    price_df.plot(figsize=(12, 5), title="Simulated Stock Prices", legend=False)
     price_df.mean(axis=1).plot(color='black', label='Mean of all stocks', linewidth=3)
     plt.xlabel("Date", fontsize=12)
     plt.ylabel("Price", fontsize=12)
     #plt.ylim([0, 1000])
-    plt.savefig("simulated_stock_prices.png", dpi=300, bbox_inches='tight')
+    plt.savefig("Imgs/simulated_stock_prices.png", dpi=300, bbox_inches='tight')
     plt.show()
 
     #Count how many stocks have a positive return from the beginning to the end
