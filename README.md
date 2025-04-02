@@ -12,16 +12,22 @@ Develop deep learning models capable of forecasting future trends in synthetic f
 ## Dataset
 This project contains a few datasets to investigate.
 
-1. Synthetic data with geometric brownian motions (GBMs) of time series with **shared** drift and volatility parameter:
+1. Synthetic data of **20** geometric brownian motions (GBMs) of time series with **shared** drift and volatility parameter:
 
 <p align="center">
   <img src="Imgs/simulated_series_plot.png" alt="Simulated stocks with same drift and volatility" width="700">
 </p>
 
-2. Synthetic data with geometric brownian motions (GBMs) of time series with **independent** drift and volatility parameter butwith **shared** seasonality:
+2. Synthetic data of **20** geometric brownian motions (GBMs) of time series with **independent** drift and volatility parameter butwith **shared** seasonality:
 
 <p align="center">
   <img src="Imgs/simulated_series_seasonality_plot.png" alt="Simulated stocks with same drift and volatility" width="700">
+</p>
+
+3. A simulated portfolio of **180** stocks from different distributions with some shared characteristics, and some not:
+
+<p align="center">
+  <img src="Imgs/simulated_stock_prices.png" alt="Simulated stocks with same drift and volatility" width="700">
 </p>
 
 ## Installation
