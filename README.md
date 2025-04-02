@@ -15,7 +15,7 @@ This project contains a few datasets to investigate.
 1. Synthetic data with geometric brownian motions (GBMs) of time series with shared drift and volatilit parameter
 
 <p align="center">
-  <img src="Imgs/simulated_series_plot.png" alt="Simulated stocks with same drift and volatility" width="500">
+  <img src="Imgs/simulated_series_plot.png" alt="Simulated stocks with same drift and volatility" width="700">
 </p>
 
 ## Installation
