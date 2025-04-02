@@ -17,7 +17,7 @@ def main():
     stock_data = pd.read_csv('../Simulated_data/simulated_stock_data.csv')  # Load stock data into a DataFrame
 
     # Parameters
-    fit_time = 500                              # Fit the model on the first 1000 days (for comparison with minimum variance portfolio)
+    fit_time = 500                              # Fit the model on the first 500 days (for comparison with minimum variance portfolio)
     n_stocks = stock_data.shape[1]-1            # Number of stocks is the number of columns
     n_obs = stock_data.shape[0] - fit_time      # Number of observations (days)
     initial_capital = 10000                     # 10,000 units of capital

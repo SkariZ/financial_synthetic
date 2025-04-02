@@ -18,7 +18,7 @@ def main():
 
     # Parameters
     n_stocks_pick = 5                           # Number of stocks to pick (and allocate equal weights to)
-    fit_time = 500                              # Fit the model on the first 1000 days (for comparison with minimum variance portfolio)
+    fit_time = 500                              # Fit the model on the first 500 days (for comparison with minimum variance portfolio)
     n_obs = stock_data.shape[0] - fit_time      # Number of observations (days)
     initial_capital = 10000                     # 10,000 units of capital
     dt = 1 / 252                                # daily steps assuming 252 trading days per year
