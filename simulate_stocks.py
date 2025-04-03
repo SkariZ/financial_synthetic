@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 np.random.seed(133455)
 #np.random.seed(13379)
+
 def simulate_ornstein_uhlenbeck(mu, theta, sigma, dt, n_steps, X0):
     """
     Simulate the Ornstein-Uhlenbeck process using the Euler-Maruyama method.

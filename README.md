@@ -18,7 +18,7 @@ This project includes multiple datasets for investigation, but you are free to e
   <img src="Imgs/simulated_series_plot.png" alt="Simulated stocks with same drift and volatility" width="700">
 </p>
 
-**Case 2:** Synthetic data of **20** geometric brownian motions (GBMs) of time series with **independent** drift and volatility parameter butwith **shared** seasonality:
+**Case 2:** Synthetic data of **20** geometric brownian motions (GBMs) of time series with **independent** drift and volatility parameter but with **shared** seasonality:
 
 <p align="center">
   <img src="Imgs/simulated_series_seasonality_plot.png" alt="Simulated stocks with same drift and volatility" width="700">

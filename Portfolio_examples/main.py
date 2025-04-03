@@ -1,7 +1,6 @@
 """
 Run through the main.py file to execute the portfolio optimization and simulation.
 """
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -13,10 +12,7 @@ import minimum_variance_portfolio as mvp2
 import mean_variance_portfolio as mvp
 import sharpe_ratio_portfolio as srp
 
-
-
-# Run their scripts
-
+# Run the main function for each portfolio example
 if __name__ == "__main__":
     # Run the naive portfolio example
     print("Naive Portfolio Example")
