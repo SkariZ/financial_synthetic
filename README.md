@@ -45,6 +45,13 @@ To establish a baseline for different portfolio strategies, five example strateg
 <img src="Imgs/Portfolio_Comparison.png" alt="Comparison between different portfolio strategies" width="700"> 
 </p>
 
+The table below highlights performance across different metrics. Green indicates the best performance for a given metric, while red marks the worst.
+
+<p align="center"> 
+<img src="Imgs/Portfolio_Performance_Metrics.png" alt="Portfolio performance on different metrics" width="700"> 
+</p>
+
+
 ## Installation
 To run this project, ensure you have the following dependencies installed:
 ```bash

@@ -71,13 +71,28 @@ def main():
         portfolio_values[t] = portfolio_value
 
     # Performance Metrics
-    print("\nFinal Portfolio Value:", portfolio_values[-1])
-    print('Total Return:', 100 * (portfolio_values[-1] - initial_capital) / initial_capital, '%')
-    print('Maximum Drawdown:', 100 * np.min(portfolio_values - np.maximum.accumulate(portfolio_values)) / initial_capital, '%')
-    annualized_return = 100 * ((portfolio_values[-1] / initial_capital) ** (252 / len(portfolio_values)) - 1)
-    print('Annualized Return:', annualized_return, '%')
+    final_portfolio_value = portfolio_values[-1]
+    total_return_perc = 100 * (final_portfolio_value - initial_capital) / initial_capital
+    max_drawdown_perc = 100 * np.min(portfolio_values - np.maximum.accumulate(portfolio_values)) / initial_capital
+    annualized_return_perc = 100 * (((final_portfolio_value / initial_capital) ** (252 / n_obs)) - 1)
     daily_returns = portfolio_values[1:] / portfolio_values[:-1] - 1
-    print('Sharpe Ratio:', np.mean(daily_returns) / np.std(daily_returns))
+    sharp_ratio = np.mean(daily_returns) / np.std(daily_returns)
+
+    print("\nFinal Portfolio Value:", final_portfolio_value)
+    print('Total Return:', total_return_perc, '%')
+    print('Maximum Drawdown:', max_drawdown_perc, '%')
+    print('Annualized Return:', annualized_return_perc, '%')
+    print('Sharpe Ratio:', sharp_ratio)
+
+    # Create a dictionary to store performance metrics
+    performance_metrics = {
+        'Final Portfolio Value': final_portfolio_value,
+        'Total Return (%)': total_return_perc,
+        'Maximum Drawdown (%)': max_drawdown_perc,
+        'Annualized Return (%)': annualized_return_perc,
+        'Sharpe Ratio': sharp_ratio,
+        'mv_weights': mv_weights.tolist()
+    }
 
     # Plot portfolio value over time
     plt.figure(figsize=(12, 6))
@@ -88,7 +103,7 @@ def main():
     plt.legend()
     plt.show()
 
-    return mv_weights, portfolio_values
+    return performance_metrics, portfolio_values
 
 if __name__ == "__main__":
     main()
